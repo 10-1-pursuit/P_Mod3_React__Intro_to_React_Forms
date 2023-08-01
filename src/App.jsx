@@ -16,6 +16,10 @@ import FormDropDownExamples from './Components/FormDropDownExamples.jsx'
 function App() {
 
 
+  const [newFellowName, setNewFellowName] = useState( "" )
+    console.log( "STATE OF  newFellowName:" , newFellowName )
+
+    const [showTypedTextAfterSubmit, setShowTypedTextAfterSubmit] = useState(false)
 
 
   return (
@@ -32,12 +36,41 @@ function App() {
       <h1>Intro to React Forms</h1>
 
 
-      {/* Dropdown */}
-      <FormDropDownExamples />
-
+      {
+        // consition/question ?                         true : false
+        showTypedTextAfterSubmit ?  <h2>{newFellowName}</h2> : <></>
+      }
 
 
       {/* Single Input */}
+      <form 
+        onSubmit={  
+
+            (synthEvent)=>{ 
+              synthEvent.preventDefault();
+
+              // console.log( synthEvent )
+              // console.log( synthEvent.target.newName )
+              // console.log( synthEvent.target.newName.value )
+
+              setShowTypedTextAfterSubmit( true )
+            }  
+
+          } 
+      >
+
+        New Fellow Name: 
+        <input type='text' 
+          id='newName' name='' className='' 
+          
+          onChange={    (synthEvent)=>{  setNewFellowName(synthEvent.target.value)   }    }
+          value={newFellowName}  
+        />
+        {/* New Fellow Name: <input type='text' id='sam' name='' className='' /> */}
+
+        <input type='submit' />
+
+      </form>
 
 
       {/* Multi Input */}
@@ -45,7 +78,8 @@ function App() {
       {/* Multi Input - 1 State */}
 
 
-
+      {/* Dropdown */}
+      {/* <FormDropDownExamples /> */}
 
       {/* Checkbox */}
       {/* <FormCheckBoxExamples /> */}
