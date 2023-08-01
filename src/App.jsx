@@ -6,6 +6,7 @@ import viteLogo from '/vite.svg'
 import './App.css'
 
 import MostFormInputs from './Components/MostFormInputs.jsx'
+import FormCheckBoxExamples from './Components/FormCheckBoxExamples.jsx'
 
 
 function App() {
@@ -25,6 +26,9 @@ function App() {
       <h1>Intro to React Forms</h1>
 
       {/* Checkbox */}
+      {/* <FormCheckBoxExamples /> */}
+
+
 
       {/* Dropdown */}
 
