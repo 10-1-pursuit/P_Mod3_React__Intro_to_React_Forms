@@ -20,6 +20,7 @@ function App() {
     console.log( "STATE OF  newFellowName:" , newFellowName )
 
     const [showTypedTextAfterSubmit, setShowTypedTextAfterSubmit] = useState(false)
+    // Here to facilitate Conditional Rendering
 
 
   return (
@@ -32,17 +33,18 @@ function App() {
           <img src={reactLogo} className="logo react" alt="React logo" />
         </a>
       </div>
-
+      
       <h1>Intro to React Forms</h1>
 
 
+      {/* Note to Self (Sam - Lol) : Opportinuty for some Inverse DataFlow */}
       {
-        // consition/question ?                         true : false
+        // condition/question ?                         true : false
         showTypedTextAfterSubmit ?  <h2>{newFellowName}</h2> : <></>
       }
 
 
-      {/* Single Input */}
+      {/* THIS IS A COMMENT: Single Input */}
       <form 
         onSubmit={  
 
@@ -73,19 +75,20 @@ function App() {
       </form>
 
 
-      {/* Multi Input */}
-
-      {/* Multi Input - 1 State */}
+      {/* THIS IS A COMMENT: Multi Input */}
 
 
-      {/* Dropdown */}
-      {/* <FormDropDownExamples /> */}
-
-      {/* Checkbox */}
-      {/* <FormCheckBoxExamples /> */}
+      {/* THIS IS A COMMENT: Multi Input - 1 State */}
 
 
-      {/* <MostFormInputs /> */}
+      {/* THIS IS A COMMENT: Dropdown */}
+        {/* <FormDropDownExamples /> */}
+
+      {/* THIS IS A COMMENT: Checkbox */}
+        {/* <FormCheckBoxExamples /> */}
+
+      {/* THIS IS A COMMENT: Refreshing and Highlighting Common Input-field Types */}
+        {/* <MostFormInputs /> */}
 
 
     </>
