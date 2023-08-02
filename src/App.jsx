@@ -12,31 +12,45 @@ import FormCheckBoxExamples from './Components/FormCheckBoxExamples.jsx'
 import FormDropDownExamples from './Components/FormDropDownExamples.jsx'
 import FormTextInputExamples from './Components/FormTextInputExamples.jsx'
 
+import SingleFormInputExample from './Components/SingleFormInputExample.jsx'
 
 
 function App() {
 
-  //// Keep You State Closest To the Component(S) That Need It/Them
-  /* 
-  
-    "Lowest Common Anscestor"
-    ♾
-    <Parent />
-      <Child /><Child />
-        ♾
+    //// Keep You State Closest To the Component(S) That Need It/Them
+    /* 
+    
+      "Lowest Common Anscestor"
+      ♾
+      <Parent />
+        <Child /><Child />
+          ♾
 
-  */
+      "BOTH the Child and the Parent need State.. Just Give it to the Parent 🧮🤷🏾‍♂️📐"
 
-
-
+    */
   const [newFellowName, setNewFellowName] = useState( "" )
-    console.log( "STATE OF  newFellowName:" , newFellowName )
+    //  console.log( "STATE OF  newFellowName:" , newFellowName )
 
   const [showTypedTextAfterSubmit, setShowTypedTextAfterSubmit] = useState(false)
   // Here to facilitate Conditional Rendering
 
 
-  
+
+  const [arrayOfFellowNames, setArrayOfFellowNames] = useState( [] )
+  //  base-case : []
+  //  max-case : [ "sam", "Natyka", "Jackie", ♾]
+  const [newNameForForm, setNewNameForForm] = useState( "" )
+
+
+
+  const renderFellowNames = arrayOfFellowNames.map( 
+    
+      (eachName)=>{
+        return(<h2>{eachName}</h2>)
+      } 
+    
+    )
 
 
   return (
@@ -53,36 +67,48 @@ function App() {
       <h1>Intro to React Forms</h1>
 
 
-      {/* Note to Self (Sam - Lol) : Opportinuty for some Inverse DataFlow */}
-      {
-        // condition/question ?                         true : false
-        showTypedTextAfterSubmit ?  <h2>{newFellowName}</h2> : <></>
-      }
+      {/* THIS IS A COMMENT: Single/Multi Input Form */}
+          {renderFellowNames}
+          <SingleFormInputExample 
+
+            // [v, f]
+            newNameForForm={newNameForForm}  
+            setNewNameForForm={setNewNameForForm}
+
+            // [v, f]
+            arrayOfFellowNames={arrayOfFellowNames}
+            addNewFellowToArray={setArrayOfFellowNames}
+            
+          />
+
+
+
+
+      {/* THIS IS A COMMENT: Multi Input Form - 1 State */}
+
+
 
 
       {/* THIS IS A COMMENT: Single Input */}
-        {/* FormTextInputExamples */}
-
-      <FormTextInputExamples  
-
-        // [v, f]
-          // showTypedTextAfterSubmitFromApp={showTypedTextAfterSubmit} 
-        showTheTextFunction={setShowTypedTextAfterSubmit} 
-
-        // [v, f]
-        newFellowName={newFellowName}
-        setNewFellowName={setNewFellowName}
-        
-      />
 
 
+        {/* Note to Self (Sam - Lol) : Opportinuty for some Inverse DataFlow ✅😉 */}
+        {
+          // condition/question ?                         true : false
+          // showTypedTextAfterSubmit ?  <h2>{newFellowName}</h2> : <></>
+        }
 
+        {/* <FormTextInputExamples  
 
-      {/* THIS IS A COMMENT: Multi Input */}
+          // [v, f]
+            // showTypedTextAfterSubmitFromApp={showTypedTextAfterSubmit} 
+          showTheTextFunction={setShowTypedTextAfterSubmit} 
 
-
-      {/* THIS IS A COMMENT: Multi Input - 1 State */}
-
+          // [v, f]
+          newFellowName={newFellowName}
+          setNewFellowName={setNewFellowName}
+          
+        /> */}
 
 
       {/* THIS IS A COMMENT: Dropdown */}
