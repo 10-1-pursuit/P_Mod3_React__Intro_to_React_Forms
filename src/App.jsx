@@ -7,20 +7,36 @@ import './App.css'
 
 
 import MostFormInputs from './Components/MostFormInputs.jsx'
+
 import FormCheckBoxExamples from './Components/FormCheckBoxExamples.jsx'
 import FormDropDownExamples from './Components/FormDropDownExamples.jsx'
-
+import FormTextInputExamples from './Components/FormTextInputExamples.jsx'
 
 
 
 function App() {
 
+  //// Keep You State Closest To the Component(S) That Need It/Them
+  /* 
+  
+    "Lowest Common Anscestor"
+    ♾
+    <Parent />
+      <Child /><Child />
+        ♾
+
+  */
+
+
 
   const [newFellowName, setNewFellowName] = useState( "" )
     console.log( "STATE OF  newFellowName:" , newFellowName )
 
-    const [showTypedTextAfterSubmit, setShowTypedTextAfterSubmit] = useState(false)
-    // Here to facilitate Conditional Rendering
+  const [showTypedTextAfterSubmit, setShowTypedTextAfterSubmit] = useState(false)
+  // Here to facilitate Conditional Rendering
+
+
+  
 
 
   return (
@@ -33,7 +49,7 @@ function App() {
           <img src={reactLogo} className="logo react" alt="React logo" />
         </a>
       </div>
-      
+
       <h1>Intro to React Forms</h1>
 
 
@@ -45,40 +61,28 @@ function App() {
 
 
       {/* THIS IS A COMMENT: Single Input */}
-      <form 
-        onSubmit={  
+        {/* FormTextInputExamples */}
 
-            (synthEvent)=>{ 
-              synthEvent.preventDefault();
+      <FormTextInputExamples  
 
-              // console.log( synthEvent )
-              // console.log( synthEvent.target.newName )
-              // console.log( synthEvent.target.newName.value )
+        // [v, f]
+          // showTypedTextAfterSubmitFromApp={showTypedTextAfterSubmit} 
+        showTheTextFunction={setShowTypedTextAfterSubmit} 
 
-              setShowTypedTextAfterSubmit( true )
-            }  
+        // [v, f]
+        newFellowName={newFellowName}
+        setNewFellowName={setNewFellowName}
+        
+      />
 
-          } 
-      >
 
-        New Fellow Name: 
-        <input type='text' 
-          id='newName' name='' className='' 
-          
-          onChange={    (synthEvent)=>{  setNewFellowName(synthEvent.target.value)   }    }
-          value={newFellowName}  
-        />
-        {/* New Fellow Name: <input type='text' id='sam' name='' className='' /> */}
-
-        <input type='submit' />
-
-      </form>
 
 
       {/* THIS IS A COMMENT: Multi Input */}
 
 
       {/* THIS IS A COMMENT: Multi Input - 1 State */}
+
 
 
       {/* THIS IS A COMMENT: Dropdown */}
@@ -97,3 +101,23 @@ function App() {
 
 export default App
 
+
+
+
+
+/*
+
+
+  < App />  [showTypedTextAfterSubmit, setShowTypedTextAfterSubmit]  [newFellowName, setNewFellowName] 
+
+  L>
+
+    // <MostFormInputs />  <FormCheckBoxExamples />  <FormDropDownExamples />   <FormTextInputExamples />[newFellowName, setNewFellowName]
+    
+    <MostFormInputs />  
+    <FormCheckBoxExamples />  
+    <FormDropDownExamples />   
+    <FormTextInputExamples />
+
+
+*/
